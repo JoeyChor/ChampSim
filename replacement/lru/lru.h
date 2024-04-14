@@ -5,12 +5,14 @@
 
 #include "cache.h"
 #include "modules.h"
+#include <fmt/os.h>
 
 class lru : champsim::modules::replacement
 {
   long NUM_WAY;
   std::vector<uint64_t> last_used_cycles;
   uint64_t cycle = 0;
+  std::optional<fmt::ostream> log;
 
 public:
   explicit lru(CACHE* cache);
